@@ -1,20 +1,7 @@
-<form action="{% url 'create' %}" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div>
-        <label for="location">지역</label><br>
-        <input type="text" name="location" id="location">
-    </div>
-    <div>
-        <label for="item">상품명</label><br>
-        <input type="text" name="item" id="item">
-    </div>
-    <div>
-        <label for="price">가격</label><br>
-        <input type="number" name="price" id="price">
-    </div>
-    <div>
-        <label for="head">필요 인원</label><br>
-        <input type="number" name="head" id="head">
+        {{ form.as_div }}
     </div>
     <input type="submit" value="submit">
 </form>

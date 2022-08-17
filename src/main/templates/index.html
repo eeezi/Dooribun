@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/static/css/style.css">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <title>두리번 마켓</title>
 
     <!-- bootstrap start -->
@@ -33,8 +34,8 @@
    <nav class="navbar">
        <div class="navbar_logo">
            <a href="../index.html">
-                <img class="logo-main row-sm-4 mx-0" src="../img/logo-eyes.png" width="80", height= "40">
-                <img class="logo-main row-sm-4 mx-0" src="../img/logo-name.png" width="80", height= "40">
+                <img class="logo-main row-sm-4 mx-0" src="{% static '/img/logo-eyes.png' %}" width="80", height= "40">
+                <img class="logo-main row-sm-4 mx-0" src="{% static '/img/logo-name.png' %}" width="80", height= "40">
            </a>
         </div>
 
@@ -117,6 +118,22 @@
     </div>
         <!-- item section end-->
 
+
+    <!--작성된 채팅 목록 불러오기-->
+    {% for post in posts %}
+        <div>{{ post.location }}</div>
+        <div>
+            {% if post.photo %}
+                <img src="{{ post.photo.url }}" alt="image">
+            {% endif %}
+        </div>
+        <div>{{ post.item }}</div>
+        <div>가격 : {{ post.price }}원</div>
+        <div>현재인원/{{ post.head }}</div>
+        <div>{{ post.date }}</div> <!--포스트 날짜-->
+        <a href="{% url 'detail' post.id %}">참여</a>
+    {% endfor %}
+    <!--작성된 채팅 목록 불러오기-->
 
 
     <!-- Footer Start -->
