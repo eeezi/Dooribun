@@ -19,4 +19,4 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return render('home')
+    return redirect('home')
