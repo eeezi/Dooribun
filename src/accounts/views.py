@@ -1,6 +1,6 @@
-from contextlib import redirect_stderr
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import auth
+from django.contrib.auth.models import User
 
 def login(request):
     if request.method == "POST":
@@ -10,12 +10,13 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return render('home')
+            return redirect('home')
         else:
             return render(request, 'wrong_login.html')
 
     else:
         return render(request, 'login.html')
+
 def logout(request):
     auth.logout(request)
     return render('home')

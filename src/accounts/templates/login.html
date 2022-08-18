@@ -1,0 +1,59 @@
+{% load static %}
+<!--
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    username: <input type="text" name="username"><br>
+    password: <input type="password" name="password"><br>
+    <input type="submit" value="로그인">
+</form>
+-->
+
+<!doctype HTML>
+<head>
+	<meta charset="UTF-8">
+	<title>Dooribun</title>
+	<link rel="stylesheet" href="{% static '/css/dsg.css' %}">
+	<script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="main-container">
+		<div class="main-wrap">
+		<header>
+			<div class="sel-lang-wrap">
+				<select class="lang-select">
+					<option>한국어</option>
+					<option>English</option>
+				</select>
+			</div>
+			<div class="title">
+				두리번
+			</div>
+		</header>
+		<section class="login-input-section-wrap">
+			<div class="login-input-wrap">	
+				<input placeholder="Username" type="text"></input>
+			</div>
+			<div class="login-input-wrap password-wrap">	
+				<input placeholder="Password" type="password"></input>
+			</div>
+			<div class="login-button-wrap">
+				<button>Sign in</button>
+			</div>
+			<div class="login-stay-sign-in">
+				<i class="far fa-check-circle"></i>
+				<span>Stay Signed in</span>
+			</div>
+		</section>
+			<p class="forget-msg">Forgot your Username or Password? | Sign up</p>
+		</section>
+		<footer>
+			<div class="copyright-wrap">
+			<span> Copyright © Dooribun Corp. All Rights Reserved.<p></p>
+				멋쟁이사자처럼 at SYU 10기
+				김다영 유진 이세진 이지영
+			</span>
+			</div>
+		</footer>
+		</div>
+	</div>
+</body>
