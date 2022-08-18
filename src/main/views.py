@@ -30,6 +30,6 @@ def create(request):
         post.save()
     return redirect('home')
 
-def detail(request, chat_id):
-    chat_detail = get_object_or_404(Post, pk=chat_id)
-    return render(request, 'detail.html', {'chat_detail':chat_detail})
+def detail(request, post_id):
+    detail = get_object_or_404(Post, pk=post_id)
+    return render(request, 'detail.html', {'detail':detail})
