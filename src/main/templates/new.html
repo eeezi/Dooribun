@@ -1,7 +1,149 @@
+{% load static %}
+<!--
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div>
-        {{ form.as_div }}
+        {{ form.as_p }}
     </div>
     <input type="submit" value="submit">
 </form>
+-->
+
+<!DOCTYPE html>
+<html lnag="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>두리번 : POST</title>
+        <link rel="stylesheet" href="{% static '/css/design.css' %}">
+        
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header">
+            <img src="{% static '/img/doribun.png' %}">
+        </div>
+
+
+        <!-- wrapper -->
+        <div id="wrapper">
+
+            <!-- content-->
+            <form action="{% url 'new' %}" method="POST">
+            {% csrf_token %}
+            <div id="content">
+                {{ form }}
+                <!-- 지역 -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="id">지역</label>
+                    </h3>
+                        <div class="area-select">
+                            <select name="">
+                                <option>-선택-</option>
+                                <option value='1'>강남구</option>
+                                <option value='2'>강동구</option>
+                                <option value='3'>강북구</option>
+                                <option value='4'>강서구</option>
+                                <option value='5'>관악구</option>
+                                <option value='6'>광진구</option>
+                                <option value='7'>구로구</option>
+                                <option value='8'>금천구</option>
+                                <option value='9'>노원구</option>
+                                <option value='10'>도봉구</option>
+                                <option value='11'>동대문구</option>
+                                <option value='12' >동작구</option>
+                                <option value='13'>마포구</option>
+                                <option value='14'>서대문구</option>
+                                <option value='15'>서초구</option>
+                                <option value='16'>성동구</option>
+                                <option value='17'>성북구</option>
+                                <option value='18'>송파구</option>
+                                <option value='19'>양천구</option>
+                                <option value='20'>영등포구</option>
+                                <option value='21'>은평구</option>
+                                <option value='22'>종로구</option>
+                                <option value='23'>중구</option>
+                                <option value='24'>중랑구</option>
+                              </select>
+                        </div>
+  
+                </div>
+
+                <!-- 매장이름 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd1">매장 이름</label></h3>
+                    <span class="box int_pass">
+                        <input type="txt" id="pswd1" class="int" maxlength="20" placeholder="매장 이름을 입력해주세요.">
+                    </span>
+                </div>
+
+                <!-- 상품명 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd2">상품명</label></h3>
+                    <span class="box int_pass">
+                        <input type="txt" id="pswd1" class="int" maxlength="20" placeholder="상품명을 입력해주세요.">
+                    </span>
+                </div>
+
+                <!-- 가격 -->
+                <div>
+                    <h3 class="join_title"><label for="name">가격</label></h3>
+                    <span class="box int_name">
+                        <input type="text" id="name" class="int" maxlength="20" placeholder="상품 가격을 입력해주세요.">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- 인원 -->
+                <div>
+                    <h3 class="join_title"><label for="yy">인원</label></h3>
+
+                    <div id="bir_wrap">
+     
+                        <!-- BIRTH_MM -->
+        
+                            <span class="box">
+                                <select id="person" class="sel">
+                                    <option>*명</option>
+                                    <option value="01">1명</option>
+                                    <option value="02">2명</option>
+                                    <option value="03">3명</option>
+                                    <option value="04">4명</option>
+                                </select>
+                            </span>
+
+
+
+                    </div>
+                    <span class="error_next_box"></span>    
+                </div>
+
+                <!-- 상품 사진 첨부 -->
+                <div>
+                    <h3 class="join_title"><label for="gender">상품 사진 첨부</label></h3>
+                    <span class="box gender_code">
+                        <input type="file">
+                    </span>
+                </div>
+
+               
+
+                <!-- POST BTN-->
+                <form action="">
+                <div class="btn_area">
+                    <input id="btnJoin" type="submit" value="POST" >
+                    </button>
+                </div>
+                </form>
+
+                
+
+            </div> 
+            </form>
+            <!-- content-->
+
+        </div> 
+        <!-- wrapper -->
+    <script src="main.js"></script>
+    </body>
+</html>
