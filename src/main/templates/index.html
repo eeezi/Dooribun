@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <title>두리번 마켓</title>
+    <title>두리번 마켓 - 공유쇼핑</title>
 
     <!-- bootstrap start -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -33,20 +33,32 @@
     <!-- nav start -->
    <nav class="navbar">
        <div class="navbar_logo">
-           <a href="../index.html">
+           <a href="{% url 'home' %}">
                 <img class="logo-main row-sm-4 mx-0" src="{% static '/img/logo-eyes.png' %}" width="80", height= "40">
                 <img class="logo-main row-sm-4 mx-0" src="{% static '/img/logo-name.png' %}" width="80", height= "40">
            </a>
         </div>
 
-       <ul class="navbar_menu row-sm-4">
-          <li><a href="">Home</a></li>
+       <ul class="navbar_menu">
+          <li class="navbar_menu_1"><a href="{% url 'home' %}">Home</a></li>
           {% if user.is_authenticated %}
-          <li><a href="{% url 'new' %}">post</a></li>
-          <li><a href="{% url 'logout' %}">logout</a></li>
-          <br>환영합니다, {{ user.username }}
+          <li class="navbar_menu_1"><a href="{% url 'new' %}">post</a></li>
+          <li class="navbar_menu_1"><a href="{% url 'logout' %}">logout</a></li>
           {% else %}
-          <li><a href="{% url 'login' %}">login</a></li>
+          <li class="navbar_menu_login">
+            <a herf="{% url 'login' %}">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2305_5153" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="4" width="20" height="20">
+                <path d="M18.721 22C18.6174 22 18.5397 21.9466 18.4879 21.8398C17.2701 19.2493 15.4305 15.2433 15.2492 14.9763C15.2233 14.9763 15.1973 14.9228 15.1714 14.8427C14.9642 14.5223 14.3164 13.4807 11 13.4807C7.42448 13.4807 6.95811 14.5223 6.80265 14.8694L6.77674 14.8961C6.62129 15.2433 3.61578 21.5727 3.48623 21.8398C3.43441 21.9733 3.27895 22.0267 3.14941 21.9733C3.01986 21.9199 2.96804 21.7596 3.01986 21.6261C3.04577 21.5727 6.15491 15.0297 6.31037 14.7092L6.33628 14.6825C6.6731 13.9614 7.50221 13 11 13C14.6014 13 15.3528 14.2018 15.6119 14.6024C15.6378 14.6291 15.6378 14.6558 15.6637 14.6558C15.8451 14.8427 17.8142 19.1157 18.9801 21.6528C19.032 21.7864 18.9801 21.9466 18.8506 22C18.7988 22 18.7729 22 18.721 22Z" fill="#c66358" stroke="#c66358" stroke-width="0.48"/>
+                <path d="M11 6.5C12.375 6.5 13.5 7.625 13.5 9C13.5 10.375 12.375 11.5 11 11.5C9.625 11.5 8.5 10.375 8.5 9C8.5 7.625 9.6 6.5 11 6.5ZM11 6C9.35 6 8 7.35 8 9C8 10.65 9.35 12 11 12C12.65 12 14 10.65 14 9C14 7.35 12.65 6 11 6Z" fill="#c66358" stroke="#c66358" stroke-width="0.48"/>
+                </mask>
+                <g mask="url(#mask0_2305_5153)">
+                <circle cx="11" cy="11" r="11" fill="#c66358"/>
+                </g>
+                <circle cx="11" cy="11" r="10.5" stroke="#c66358"/>
+                </svg>
+            </a>
+          </li>
           <!--회원가입-->
           {% endif %}
        </ul>
@@ -85,11 +97,20 @@
     </div>
     <!-- area select end -->
 
-    <!-- item section start  밑에 목록 완료되면 지울 예정-->
+    <!-- Vanner start -->
+    <div class="vanner">
+        <a href="">
+            <img src="" alt="배너이미지">
+        </a>
+    </div>
+    <!-- Vanner end -->
+    
+    <section class="item-section-wrapper">
+            <!-- item section start-->
     <div class="item">
         <div class="item-left">
-            <div class="item-location">중계동 롯데백화점</div>
-            <div class="item-img"><img src="{% static 'img/item_example.jfif' %}" alt="이미지 예시"></img></div>
+            <div class="item-img" style="background-image: url('./img/item_example.jfif');"><span>배경이미지</span></div>
+            <div class="item-location">중계동 롯데마트</div>
         </div>
 
         <div class="item-right">
@@ -103,48 +124,41 @@
             </div>    
         </div>
     </div>
-
-    <div class="item">
-        <div class="item-left">
-            <div class="item-location">중계동 롯데백화점</div>
-            <div class="item-img"><img src="{% static 'img/item_example.jfif' %}" alt="이미지 예시"></img></div>
-        </div>
-
-        <div class="item-right">
-            <div class="item-right-top">
-                <div class="item-name"><h4>우유 1.2L 1+1</h4></div>
-                <div class="item-price">가격 : 100만원</div>
-            </div>    
-            <div class="item-right-bottom">
-                <a class="item-number">1/2</a>
-                <button class="item-joinbtn">참여</button>
-            </div>    
-        </div>
-    </div>
-        <!-- item section end-->
-
 
     <!--작성된 채팅 목록 불러오기 여기 css 해주삼....-->
     {% for post in posts %}
-        <div>{{ post.location }}</div>
-        <div>
+    <div class="item">
+        <div class="item-left">
             {% if post.photo %}
-                <img src="{{ post.photo.url }}" alt="image">
+            <div class="item-img" style="background-image: url('{{ post.photo.url }}');"><span>배경이미지</span></div>
             {% endif %}
+            <div class="item-location">{{ post.location }}</div>
         </div>
-        <div>{{ post.item }}</div>
-        <div>가격 : {{ post.price }}원</div>
-        <div>1/{{ post.head }}</div>
-        <div>{{ post.date }}</div> <!--포스트 날짜 지워도 됨-->
-        <a href="{% url 'detail' post.id %}">참여</a>
+
+        <div class="item-right">
+            <div class="item-right-top">
+                <div class="item-name"><h4>{{ post.item }}</h4></div>
+                <div class="item-price">가격 : {{ post.price }}원</div>
+            </div>    
+            <div class="item-right-bottom">
+                <a class="item-number">1/{{ post.head }}</a>
+                <button class="item-joinbtn" href="{% url 'detail' post.id %}">참여</button>
+            </div>    
+        </div>
+    </div>
     {% endfor %}
     <!--작성된 채팅 목록 불러오기-->
+    
+    
+    </section>
+    <!-- item section end-->
+
 
 
     <!-- Footer Start -->
     <div class="footer">
         <div>
-            &copy; Doribun<br>
+            &copy; Dooribun<br>
             멋쟁이사자처럼 at SYU 10기<br> 
             김다영 유진 이세진 이지영 
         </div>

@@ -26,26 +26,30 @@
 				</select>
 			</div>
 			<div class="title">
-				두리번
+				<img src="{% static '/img/doribun.png' %}" alt="dooribun">
 			</div>
 		</header>
+        <form name="input" action="{% url 'login' %}" method="POST">
 		<section class="login-input-section-wrap">
 			<div class="login-input-wrap">	
-				<input placeholder="Username" type="text"></input>
+				<input placeholder="Username" type="text" name="username"></input>
 			</div>
 			<div class="login-input-wrap password-wrap">	
-				<input placeholder="Password" type="password"></input>
+				<input placeholder="Password" type="password" name="password"></input>
 			</div>
+			<!--여기 action에 주소 넣어주세연-->
 			<div class="login-button-wrap">
-				<button>Sign in</button>
+    			    {% csrf_token %}
+                    <input id="input1" type="submit" value="sign in">
 			</div>
 			<div class="login-stay-sign-in">
 				<i class="far fa-check-circle"></i>
 				<span>Stay Signed in</span>
 			</div>
 		</section>
-			<p class="forget-msg">Forgot your Username or Password? | Sign up</p>
-		</section>
+        </form>
+			<div class="forget-msg">
+				Forgot your Username or Password? | <a href="">Sign up</a></div>
 		<footer>
 			<div class="copyright-wrap">
 			<span> Copyright © Dooribun Corp. All Rights Reserved.<p></p>

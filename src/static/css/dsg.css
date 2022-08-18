@@ -1,9 +1,9 @@
 :root{
 	--body-background-color: #fff;
-	--font-color: #4e4e4e;
+	--font-color: #c66358;
 	--border-gray-color : #dadada;
-	--naver-green-color: #FFCCCC;
-	--naver-green-border-color: #FFCCCC;
+	--naver-green-color: #f5e7e0;
+	--naver-green-border-color: #f5e7e0;
 }
 
 
@@ -31,7 +31,7 @@ body{
 {
 	width: 96px;
 	height: 30px;
-	color: var(--font-color);
+	color: #c66358;
 	border: solid 1px var(--border-gray-color);
 }
 .main-container .main-wrap .logo-wrap{
@@ -55,7 +55,7 @@ font-size: 40px;
 	align-items: center;
 }
 .login-input-section-wrap{
-	padding-top: 120px;
+	padding-top: 50px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -80,14 +80,26 @@ font-size: 40px;
 }
 .login-button-wrap {
 	padding-top: 13px;
+	color:#c66358;
 }
-.login-button-wrap button{
+
+#input1{
+	background-color: transparent;
+	border-color: transparent;
+	margin-left: 45%;
+	color:#c66358;
+	font-size: 18px;
+	margin-top: 5px;
+}
+
+.login-button-wrap {
+	margin-top: 20px;
 	width: 465px;
 	height :48px;
 	font-size: 18px;
 	background: var(--naver-green-color);
-	color: white;
 	border: solid 1px var(--naver-green-border-color);
+	color:#c66358;
 }
 .login-stay-sign-in{
 	width: 465px;
@@ -95,14 +107,14 @@ font-size: 40px;
 	
 	display: flex;
 	font-size: 15px;
-	color: #4e4e4e;
+	color: #c66358;
 	align-items: center;
 	justify-content: flex-start;
 	border-bottom: solid 1px var(--border-gray-color);
 }
 .login-stay-sign-in i{
 	font-size: 25px;
-	color: #9ba1a3;
+	color: #c66358;
 }
 .login-stay-sign-in span{
 	padding-left: 5px;
@@ -122,9 +134,13 @@ font-size: 40px;
 	color:var(--font-color);
 	font-size: 14px;
 	padding-top: 10px;
-	margin-left: 45%;
-
+	
 }
+.forget-msg{
+	margin-left: 30%;
+}
+
+
 footer{
    
 	padding-top: 95px;
@@ -153,7 +169,7 @@ footer .copyright-wrap span img{
 	height: 11px;
 }
 footer .copyright-wrap span{
-	margin-top: 70%;
+	margin-top: 41%;
 	font-size: 13px;
 	line-height: 15px;
 }
