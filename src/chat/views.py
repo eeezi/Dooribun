@@ -8,7 +8,7 @@ def room(request):
 '''
 
 def chat(request, post_id):
-    chat_detail = get_object_or_404(Post, pk=post_id)
-    return render(request, 'chat_detail.html', {'chat_detail':chat_detail})
+    openchat = get_object_or_404(Post, pk=post_id)
+    return render(request, 'openchat.html', {'openchat':openchat})
 
 
