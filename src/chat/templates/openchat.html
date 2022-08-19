@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>채팅방 구현</title>
 <link rel="stylesheet" href="{% static '/css/chatdsg.css' %}">
+
+
+<!-- !!!!!! 스크립트 !!!!! -->
 <script>
 var test_type = 0;
 
@@ -25,7 +28,7 @@ function jstalktheme_addmsg(type, name, time, msg)
 	{
 		onewmsg.className="othertalk";
 		onewmsg.innerHTML = 
-		"<div class=\"profile_image\" style=\"background: url(user2.png) no-repeat;\">\n"+
+		"<div class=\"profile_image\">\n"+
 		"</div>\n"+
 		"<div class=\"box\">\n"+
 		"<div class=\"profile_name\">\n"+
@@ -81,6 +84,9 @@ function jstalktheme_testfunc()
 }
 
 </script>
+<!-- !!!!! 스크립트 !!!!! -->
+
+
 </head>
 
 <body>
