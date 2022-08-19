@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype HTML>
+<head>
+	<meta charset="UTF-8">
+	<title>Dooribun</title>
+	<link rel="stylesheet" href="{% static '/css/wrong_login.css' %}">
+	<script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="main-container">
+		<div class="main-wrap">
+		<header>
+			<div class="sel-lang-wrap">
+				<select class="lang-select">
+					<option>한국어</option>
+					<option>English</option>
+				</select>
+			</div>
+			<div class="title">
+				<img src="{% static '/img/doribun.png' %}" alt="dooribun">
+			</div>
+		</header>
+		<section class="login-input-section-wrap">
+			<div class="wrong_login_title">
+                잘못된 로그인 정보입니다.
+                <br> 다시 로그인해주세요.
+            </div>
+			<!--여기 action에 주소 넣어주세연-->
+			<div class="login-button-wrap">
+    			<a href="{% url 'login' %}"><input id="input1" type="submit" value="RETRY"></a>
+			</div>
+			
+		<footer>
+			<div class="copyright-wrap">
+			<span> Copyright © Dooribun Corp. All Rights Reserved.<p></p>
+				멋쟁이사자처럼 at SYU 10기
+				김다영 유진 이세진 이지영
+			</span>
+			</div>
+		</footer>
+		</div>
+	</div>
+</body>

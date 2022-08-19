@@ -161,8 +161,47 @@
   vertical-align: middle;
 }
 </style>
+
+
+<!-- !!!!!! 스크립트 시작 !!!!!! -->
 <script>
 var test_type = 0;
+
+const roomName = JSON.parse(document.getElementById('post_id').textContent);
+
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/chat/'
+            + roomName
+            + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#chat-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+
+        document.querySelector('#chat-message-submit').onclick = function(e) {
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        };
+
 
 /*
  * type
@@ -233,10 +272,15 @@ function jstalktheme_testfunc()
 	var m = d.getMinutes();
 
 	test_type ^= 0x01;
-	jstalktheme_addmsg(test_type, "아무개", ampm+" "+h+":"+m, otxtmsg.value.replace("\n","<br />\n"));
+	jstalktheme_addmsg(test_type, "{{user.username}}", ampm+" "+h+":"+m, otxtmsg.value.replace("\n","<br />\n"));
 }
 
 </script>
+<!-- !!!!!! 스크립트 끝 !!!!! -->
+
+
+
+
 </head>
 
 <body>
@@ -246,7 +290,13 @@ function jstalktheme_testfunc()
 </div>
 
 <div class="sendmsg">
-    <textarea class="textarea" id="jstalktheme_testmsg" onkeypress="if(event.keyCode==13){ jstalktheme_testfunc(); this.value=''; return false; }else if(event.keyCode==10){ this.value+='\n'; }"></textarea>
+    <textarea class="textarea" id="jstalktheme_testmsg" onkeypress="
+	if(event.keyCode==13){ 
+		jstalktheme_testfunc(); 
+		this.value=''; return false;
+		}
+		else if(event.keyCode==10){ 
+			this.value+='\n'; }"></textarea>
     <div class="button" onclick="jstalktheme_testfunc()">
  	   <p>전송</p>
     </div>
