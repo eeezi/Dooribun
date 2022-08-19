@@ -13,7 +13,7 @@
 	<meta charset="UTF-8">
 	<title>Dooribun</title>
 	<link rel="stylesheet" href="{% static '/css/dsg.css' %}">
-	<script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+	<script src="{% static '/js/log.jsp' %}"></script>
 </head>
 <body>
 	<div class="main-container">
@@ -26,21 +26,23 @@
 				</select>
 			</div>
 			<div class="title">
-				<a href="{% url 'home' %}"><img src="{% static '/img/doribun.png' %}" alt="dooribun"></a>
+				<img src="{% static '/img/doribun.png' %}" alt="dooribun">
 			</div>
 		</header>
         <form name="input" action="{% url 'login' %}" method="POST">
 		<section class="login-input-section-wrap">
 			<div class="login-input-wrap">	
-				<input placeholder="Username" type="text" name="username"></input>
+				<input placeholder="Username" type="text" id="id" name="username"></input>
 			</div>
 			<div class="login-input-wrap password-wrap">	
-				<input placeholder="Password" type="password" name="password"></input>
+				<input placeholder="Password" type="password" id="pw" name="password"></input>
 			</div>
 			<!--여기 action에 주소 넣어주세연-->
 			<div class="login-button-wrap">
     			    {% csrf_token %}
+					<onclick="submit_check();">
                     <input id="input1" type="submit" value="sign in">
+					</onclick>
 			</div>
 			<div class="login-stay-sign-in">
 				<i class="far fa-check-circle"></i>
@@ -49,7 +51,7 @@
 		</section>
         </form>
 			<div class="forget-msg">
-				Forgot your Username or Password? | <a href="{% url 'signup' %}">Sign up</a></div>
+				Forgot your Username or Password? | <a href="">Sign up</a></div>
 		<footer>
 			<div class="copyright-wrap">
 			<span> Copyright © Dooribun Corp. All Rights Reserved.<p></p>
