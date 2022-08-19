@@ -26,7 +26,7 @@
 				</select>
 			</div>
 			<div class="title">
-				<img src="{% static '/img/doribun.png' %}" alt="dooribun">
+				<a href="{% url 'home' %}"><img src="{% static '/img/doribun.png' %}" alt="dooribun"></a>
 			</div>
 		</header>
         <form name="input" action="{% url 'login' %}" method="POST">
@@ -49,7 +49,7 @@
 		</section>
         </form>
 			<div class="forget-msg">
-				Forgot your Username or Password? | <a href="">Sign up</a></div>
+				Forgot your Username or Password? | <a href="{% url 'signup' %}">Sign up</a></div>
 		<footer>
 			<div class="copyright-wrap">
 			<span> Copyright © Dooribun Corp. All Rights Reserved.<p></p>

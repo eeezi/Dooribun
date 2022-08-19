@@ -12,7 +12,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('login/', accounts_views.login, name='login'),
     path('logout/', accounts_views.logout, name='logout'),
+    path('signup/', accounts_views.signup, name='signup'),
     path('new/', views.new, name='new'),
     path('chat/<int:post_id>', chat_views.chat, name='chat'),
-
+    
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

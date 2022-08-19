@@ -20,3 +20,11 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('home')
+
+def signup(request):
+    if request.method == "POST":
+        if request.POST['userpw'] == request.POST['repeat']:
+            new_user = User.objects.create_user(username=request.POST['userid'], password=request.POST['userpw'])
+            auth.login(request, new_user)
+            return redirect('home')
+    return render(request, 'signup.html')

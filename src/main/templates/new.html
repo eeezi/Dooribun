@@ -20,7 +20,7 @@
     <body>
         <!-- header -->
         <div id="header">
-            <img src="{% static '/img/doribun.png' %}">
+            <a href="{% url 'home' %}"><img src="{% static '/img/doribun.png' %}"></a>
         </div>
 
 
@@ -31,7 +31,6 @@
             <form action="{% url 'new' %}" method="POST">
             {% csrf_token %}
             <div id="content">
-                {{ form }}
                 <!-- 지역 -->
                 <div>
                     <h3 class="join_title">
