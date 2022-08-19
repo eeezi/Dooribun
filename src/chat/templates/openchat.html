@@ -4,204 +4,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>채팅방 구현</title>
-<style>
-.jstalktheme
-{
-	background-color: #9bbad8;
-	padding: 4px 4px 0px 4px;
-}
-
-.jstalktheme .clear
-{
-	clear: both;
-}
-
-.jstalktheme .blank
-{
-	clear: both;
-	height: 4px;
-}
-
-.jstalktheme .msg
-{
-	height: calc(100% - 72px);
-	overflow-y: scroll;
-	
-	font-size: 12px;
-}
-
-.jstalktheme .msg .time
-{
-	font-size: 10px;
-}
-
-.jstalktheme .msg .mytalk
-{
-	float: right;
-	width: 100%;
-}
-
-.jstalktheme .msg .mytalk .time
-{
-	float: right;
-	bottom: 0;
-}
-
-.jstalktheme .msg .mytalk .a
-{
-	float: right;
-	position: relative;
-	min-height: 24px;
-	max-width: calc(100% - 64px);
-	left: 2px;
-	background-color: #ffec42;
-	border-radius: 3px;
-	z-index: 2;
-	padding: 0px 4px 0px 4px;
-	word-break: break-all;
-}
-
-.jstalktheme .msg .mytalk .b
-{
-	float: right;
-	position: relative;
-	width: 8px;
-	height: 22px;
-	background: url(./chat_balloon_yellow.right.png) no-repeat;
-	z-index: 1;
-}
-
-.jstalktheme .msg .othertalk
-{
-	float: left;
-	width: 100%;
-}
-
-.jstalktheme .msg .othertalk .profile_image
-{
-	float: left;
-	width: 40px;
-	height: 40px;
-	border-radius: 14px; 
-}
-
-.jstalktheme .msg .othertalk .box
-{
-	float: left;
-	width: calc(100% - 48px);
-}
-
-.jstalktheme .msg .othertalk .box .profile_name
-{
-	font-size: 12px;
-}
-
-.jstalktheme .msg .othertalk .box .a
-{
-	float: left;
-	position: relative;
-	width: 8px;
-	height: 22px;
-	background: url(./chat_balloon_white.left.png) no-repeat;
-	z-index: 1;
-}
-
-.jstalktheme .msg .othertalk .box .b
-{
-	float: left;
-	position: relative;
-	min-height: 24px;
-	max-width: calc(100% - 64px);
-	left: -2px;
-	background-color: #ffffff;
-	border-radius: 3px;
-	z-index: 2;
-	padding: 0px 4px 0px 4px;
-	word-break: break-all;
-}
-
-.jstalktheme .msg .othertalk .box .time
-{
-	float: left;
-}
-
-.jstalktheme .sendmsg
-{
-	
-}
-
-.jstalktheme .sendmsg .textarea
-{
-	float: left;
-	width: calc(100% - 68px);
-	height: 64px;
-	border-radius: 8px 0px 0px 8px;
-	margin: 0px 0px 0px 0px;
-	padding: 2px 2px 2px 2px;
-	resize: none;
-}
-
-.jstalktheme .sendmsg .button
-{
-	float: right;
-	width: 62px;
-	height: 68px;
-	background-color: #ffec42;
-	border-radius: 0px 8px 8px 0px;
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-	text-align: center;
-	display: table;
-	cursor: pointer;
-}
-
-.jstalktheme .sendmsg .button p
-{
-  display: table-cell;
-  vertical-align: middle;
-}
-</style>
-
-
-<!-- !!!!!! 스크립트 시작 !!!!!! -->
+<link rel="stylesheet" href="{% static '/css/chatdsg.css' %}">
 <script>
 var test_type = 0;
-
-const roomName = JSON.parse(document.getElementById('post_id').textContent);
-
-        const chatSocket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/ws/chat/'
-            + roomName
-            + '/'
-        );
-
-        chatSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
-        };
-
-        chatSocket.onclose = function(e) {
-            console.error('Chat socket closed unexpectedly');
-        };
-
-        document.querySelector('#chat-message-input').focus();
-        document.querySelector('#chat-message-input').onkeyup = function(e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#chat-message-submit').click();
-            }
-        };
-
-        document.querySelector('#chat-message-submit').onclick = function(e) {
-            const messageInputDom = document.querySelector('#chat-message-input');
-            const message = messageInputDom.value;
-            chatSocket.send(JSON.stringify({
-                'message': message
-            }));
-            messageInputDom.value = '';
-        };
-
 
 /*
  * type
@@ -220,7 +25,7 @@ function jstalktheme_addmsg(type, name, time, msg)
 	{
 		onewmsg.className="othertalk";
 		onewmsg.innerHTML = 
-		"<div class=\"profile_image\" style=\"background: url(./profile_image.png) no-repeat;\">\n"+
+		"<div class=\"profile_image\" style=\"background: url(user2.png) no-repeat;\">\n"+
 		"</div>\n"+
 		"<div class=\"box\">\n"+
 		"<div class=\"profile_name\">\n"+
@@ -272,31 +77,25 @@ function jstalktheme_testfunc()
 	var m = d.getMinutes();
 
 	test_type ^= 0x01;
-	jstalktheme_addmsg(test_type, "{{user.username}}", ampm+" "+h+":"+m, otxtmsg.value.replace("\n","<br />\n"));
+	jstalktheme_addmsg(test_type, "{{user}}", ampm+" "+h+":"+m, otxtmsg.value.replace("\n","<br />\n"));
 }
 
 </script>
-<!-- !!!!!! 스크립트 끝 !!!!! -->
-
-
-
-
 </head>
 
 <body>
-<div class="jstalktheme" id="jstalktheme_test" style="width: 320px; height: 480px;">
+	<div class="talkemg" >
+<a href="">
+		<img src="{% static '/img/eye.png' %}" alt="로고" width="140px">
+		<img src="{% static '/img/name.png' %}" alt="눈알" width="150px"></a>
+	</div>
+<div class="jstalktheme" id="jstalktheme_test" style="width:960px; height:1960px;">
 
 <div class="msg">
 </div>
 
 <div class="sendmsg">
-    <textarea class="textarea" id="jstalktheme_testmsg" onkeypress="
-	if(event.keyCode==13){ 
-		jstalktheme_testfunc(); 
-		this.value=''; return false;
-		}
-		else if(event.keyCode==10){ 
-			this.value+='\n'; }"></textarea>
+    <textarea class="textarea" id="jstalktheme_testmsg" onkeypress="if(event.keyCode==13){ jstalktheme_testfunc(); this.value=''; return false; }else if(event.keyCode==10){ this.value+='\n'; }"></textarea>
     <div class="button" onclick="jstalktheme_testfunc()">
  	   <p>전송</p>
     </div>
